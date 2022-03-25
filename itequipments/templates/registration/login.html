@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<div class="row justify-content-center mt-5 ">
+  <div style="text-align: center;">
+      <h2>Login</h2>
+  {% if form.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <p>Your username and password didn't match. Please try again. </p>
+      <a href="{% url 'login' %}"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+  </div>
+  {% else %}
+  <p>Please, use the following form to log-in. If you don't have an account <a href="{% url "register" %}">register here</a></p>
+  {% endif %}
+</div>
+  <div class="login-form">
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password">
+            </div>
+            <br>
+      <input type="hidden" name="next" value="{{ next }}" />
+      <p><input type="submit" value="Log-in"></p>
+    </form>
+
+    <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
+  </div>
+
+  <br>
+        <hr>
+        <div class="row justify-content-center mt-4">
+            <img src="{% static 'logos.png' %}" style='width: 200px; height: 60px;' alt="">
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
