@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from . models import All_equipment
+from .models import All_equipment
+from django.forms.widgets import NumberInput
 
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
@@ -28,25 +29,34 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 
-
-class EquipmentForm(ModelForm):
-
-    assigned_to = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
-   
-
-    class Meta:
+class EquipmentForm(forms.ModelForm):
+        class Meta:
          model= All_equipment
          fields = [
+            'asset_no',
+            'device_type',
+            'device_make',
+            'device_model', 
+            'location_status', 
+            'serial_no', 
+            'purchase_reason',
+            'price',
+            'in_service',
+            'image',
+            'date_assigned',
             'assigned_to'
-            #'asset_no', 
-            #'device_type',
-            #'device_make',
-            #'device_model', 
-            #'location_status', 
-            #'serial_no', 
-            #'purchase_reason',
-            #'price',
-            #'in_service',
-            #'image', 
-            #'date_assigned',
+
          ]
+
+
+
+        assigned_to = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+        device_type = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+        device_make = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+        device_model = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+        location_status = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+        serial_no = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
+        purchase_reason = forms.CharField(widget=forms.Textarea(attrs={"class":"form-control"}))
+        date_assigned = forms.DateField(widget=NumberInput(attrs={'type': 'date'}))
+    
+    

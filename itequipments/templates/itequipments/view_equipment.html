@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> IT Equipment: {{equipment.asset_no}} </h1>
+
+
+{{equipment.assigned_to}}
+{{equipment.price}}
+
+{% if equipment.image %}
+<img src="{{ equipment.image.url }}" alt="">
+{% endif %}
+
+<form action="{% url 'edit_equipment' equipment.id %}" method="GET"> 
+{% csrf_token %}
+<button type="submit">Edit</button>
+</form>
+
+<a href="{% url 'delete_equipment' equipment.id %}">Delete</a>
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+{% if form.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <p>{{ error }}</p>
+      <a href="{% url 'add_equipment' %}"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+  </div>
+{% endif %}
+
+<div class="container">
+    
+
+    <div class="col-md-8 center_div">
+
+    <h1 class="header_fix">Add IT Equipment</h1>
+
+    <form method="POST" action='{{ action_url }}' enctype='multipart/form-data' >
+        {% csrf_token %}
+        
+        <p>
+            <label for="id_asset_no">Asset no:</label>
+            <input type="text" name="asset_no" maxlength="100" required id="id_asset_no" value="IT0{{count}}" readonly></p>
+        
+          
+          <p>
+            <label for="id_device_type">Device type:</label>
+            <input type="text" name="device_type" class="form-control" required id="id_device_type"></p>
+        
+          
+          <p>
+            <label for="id_device_make">Device make:</label>
+            <input type="text" name="device_make" class="form-control" required id="id_device_make"></p>
+        
+          
+          <p>
+            <label for="id_device_model">Device model:</label>
+            <input type="text" name="device_model" class="form-control" required id="id_device_model"></p>
+        
+          
+          <p>
+            <label for="id_location_status">Location status:</label>
+            <input type="text" name="location_status" class="form-control" required id="id_location_status"></p>
+        
+          
+          <p>
+            <label for="id_serial_no">Serial no:</label>
+            <input type="text" name="serial_no" class="form-control" required id="id_serial_no"></p>
+        
+          
+          <p>
+            <label for="id_purchase_reason">Purchase reason:</label>
+            <textarea name="purchase_reason" cols="40" rows="10" class="form-control" required id="id_purchase_reason"></textarea></p>
+        
+          
+          <p>
+            <label for="id_price">Price:</label>
+            <input type="number" name="price" step="0.01" id="id_price"></p>
+        
+          
+          <p>
+            <label for="id_in_service">In service:</label>
+            <input type="checkbox" name="in_service" id="id_in_service"></p>
+        
+          
+          <p>
+            <label for="id_image">Image:</label>
+            <input type="file" name="image" accept="image/*" id="id_image"></p>
+        
+          
+          <p>
+            <label for="id_date_assigned">Date assigned:</label>
+            <input type="date" name="date_assigned" required id="id_date_assigned"></p>
+        
+          
+          <p>
+            <label for="id_assigned_to">Assigned to:</label>
+            <input type="text" name="assigned_to" class="form-control" required id="id_assigned_to"></p>
+               
+        
+        <button type="submit">Submit</button>
+        
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

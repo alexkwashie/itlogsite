@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container all_eq">
+
+
+  <h1 class="header_fix"> Searched Equipment by Asset no: <span style="color: blue;"> {{search_equipment}} </span> </h1>
+
+
+  <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">id#</th>
+          <th scope="col">Asset #</th>
+          <th scope="col">Assigned To:</th>
+          <th scope="col">Device Type:</th>
+          <th scope="col">Device Model:</th>
+          <th scope="col">Date Created:</th>
+          <th scope="col">Date Assigned:</th>
+          <th scope="col">In Service:</th>
+          <th scope="col">Location Status:</th>
+        </tr>
+      </thead>
+     
+      
+      <tbody>
+          {% for search in searchList %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td><a href="{% url "view_equipment" search.id %}"> {{search.asset_no}} </a></td>
+          <td>{{search.assigned_to}}</td>
+          <td>{{search.device_type}}</td>
+          <td>{{search.device_model}}</td>
+          <td>{{search.created_date}}</td>
+          <td>{{search.date_assigned}}</td>
+          <td>{{search.in_service}}</td>
+          <td>{{search.location_status}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      
+
+    <!--end of Pagination-->
+    {% endblock %}

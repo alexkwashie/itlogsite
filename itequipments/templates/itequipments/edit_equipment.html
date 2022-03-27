@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Edit IT Equipment</h1>
+
+{{ error }}
+
+<form method="POST" enctype='multipart/form-data'>
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button type="submit">Submit</button>
+<a href="{% url 'view_equipment' equipment.id  %}"><div class="btn btn-primary">Cancel</div></a>
+
+</form>
+
+
+{% endblock %}

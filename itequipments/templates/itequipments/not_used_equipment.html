@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> All Equipment List</h1>
+
+<div style="width: 95%;margin-left: auto; margin-right: auto;">
+
+
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">id#</th>
+            <th scope="col">Asset #</th>
+            <th scope="col">Assigned To:</th>
+            <th scope="col">Device Type:</th>
+            <th scope="col">Device Model:</th>
+            <th scope="col">Date Created:</th>
+            <th scope="col">Date Assigned:</th>
+            <th scope="col">In Service:</th>
+            <th scope="col">Location Status:</th>
+          </tr>
+        </thead>
+       
+        
+        <tbody>
+            {% for item in equipment %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="{% url "view_equipment" item.id %}"> {{item.asset_no}} </a></td>
+            <td>{{item.assigned_to}}</td>
+            <td>{{item.device_type}}</td>
+            <td>{{item.device_model}}</td>
+            <td>{{item.created_date}}</td>
+            <td>{{item.date_assigned}}</td>
+            <td>{{item.in_service}}</td>
+            <td>{{item.location_status}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        
+    </div>
+
+    {% endblock %}

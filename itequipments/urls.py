@@ -15,4 +15,13 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'), 
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('register/', views.register, name='register'),
+
+    # Application
+    path('all_equipment/', views.all_equipment, name='all_equipment'),
+    path('all_equipment_search/', views.all_equipment_search, name='all_equipment_search'),
+    path('not_used_equipment/', views.not_used_equipment, name='not_used_equipment'),
+    path('add_equipment/', views.add_equipment, name='add_equipment'),
+    path('view_equipment/<int:log_pk>', views.view_equipment, name='view_equipment'),
+    path('edit_equipment/<int:log_pk>', views.edit_equipment, name='edit_equipment'),
+    path('edit_equipment/<int:log_pk>/delete', views.delete_equipment, name='delete_equipment'),
 ]

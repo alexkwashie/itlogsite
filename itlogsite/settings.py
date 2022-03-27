@@ -36,15 +36,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'itequipments.apps.ItequipmentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'itequipments',
-    'anymail'
-
+    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -142,8 +141,10 @@ MEDIA_ROOT = BASE_DIR.joinpath('media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
+#LOGOUT_REDIRECT_URL = 'logout'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
 
 EMAIL_BACKEND = "anymail.backends.sendinblue.EmailBackend"
 DEFAULT_FROM_EMAIL = "info@indestructible.co.uk"
