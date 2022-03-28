@@ -2,22 +2,67 @@
 
 {% block content %}
 
-<h1> IT Equipment: {{equipment.asset_no}} </h1>
 
+        <div class="container" style="width:1000px; margin-top:70px;">
+            <div class="title h1 text-center"><h1> IT Equipment: {{equipment.asset_no}} </h1></div>
+            <div class="card ">
+              <div class="row ">
+          
+                <div class="col-sm-7">
+                  <div class="container card-block" style="margin: 40px;">
+                    <!--           <h4 class="card-title">Small card</h4> -->
+                    <p>Assigned_to: {{equipment.assigned_to}}</p>
+                    <p>Asset no: {{equipment.asset_no}}</p>
+                    <p>Price: {{equipment.price}}</p>
+                    <p>Equipment Price: £{{equipment.price}}</p>
+                    <p>Device Type: {{equipment.device_type}}</p>
+                    <p>Device Make: {{equipment.device_make}}</p>
+                    <p>Device model: {{equipment.device_model}}</p>
+                    <p>Serial no: {{equipment.serial_no}}</p>
+                    <p>Location status: {{equipment.location_status}}</p>
+                    <p>In service: {{equipment.in_service}}</p>
+                    
+                  </div>
+                  
+                </div>
+          
+                {% if equipment.image %}
+                <div class="col-sm-5">
+                  <img class="d-block w-100 rounded" style="padding: 0px;" src="{{ equipment.image.url }}" alt="">
+                </div>
+              </div>
+            </div>
 
-{{equipment.assigned_to}}
-{{equipment.price}}
+            {% else %}
 
-{% if equipment.image %}
-<img src="{{ equipment.image.url }}" alt="">
-{% endif %}
+            <div class="col-sm-5">
+                <img class="d-block w-100 rounded" style="padding: 0px;" src="" alt="">
+              </div>
+            </div>
+          </div>
+            {% endif %}
 
-<form action="{% url 'edit_equipment' equipment.id %}" method="GET"> 
-{% csrf_token %}
-<button type="submit">Edit</button>
-</form>
+    
+            
+            <div class="container d-flex" style="margin-top: 15px;">
+                
+            
+                <form action="{% url 'edit_equipment' equipment.id %}" method="GET"> 
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-primary" style="margin-right: 10px;">Edit</button>
+               </form> 
+            
+                        
+        
+            <button type="button" class="btn btn-danger">
+                    <a href="{% url 'delete_equipment' equipment.id %}" style="color: white;">Delete</a>
+            </button>
+            
+            </div>
+        
 
-<a href="{% url 'delete_equipment' equipment.id %}">Delete</a>
+        </div>
+
 
 
 {% endblock %}

@@ -19,10 +19,15 @@
 <body>
   
   {% if request.user.is_authenticated %} 
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-sm navbar navbar-dark bg-primary">
       <div class="container">
         <!--Left side Logo-->
-        <a href="/itequipments" class="navbar-brand"><img src="{% static 'idplogo.png' %}" style='width: 150px; height: 40px;' alt="">ITlogsite</a>
+
+      
+        <a href="/itequipments" class="navbar-brand"><img src="{% static 'idplogo.png' %}" style='width: 150px; height: 50px;' alt=""><span style="font-weight: 600; font-size:large;">IT LOGSITE</span></a>
+          
+
+        
       
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
         <span class="navbar-toggler-icon"></span>
@@ -31,23 +36,26 @@
   
       <div class="collapse navbar-collapse" id="navmenu">
   
-      <ul class="navbar-nav ms-auto menu">
+      <ul class="navbar-nav ms-auto menu" style="font-weight: 600;">
   
         <li {% if section == "home" %} class="selected"{% endif %}>
-          <a class="nav-link" href="{% url "home" %}">Home</a>
+          <a class="nav-link" href="{% url "home" %}" style='color: white;' 
+          onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">Home</a>
         </li>
         <li {% if section == "all_equipment" %}class="selected"{% endif %}>
-          <a class="nav-link" href="{% url "all_equipment" %}">All Equipment List</a>
+          <a class="nav-link" href="{% url "all_equipment" %}" style='color: white;' 
+          onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">All Equipment List</a>
         </li>
         <li {% if section == "add_equipment" %}class="selected"{% endif %}>
-          <a class="nav-link" href="{% url "add_equipment" %}">Add IT equipment</a>
+          <a class="nav-link" href="{% url "add_equipment" %}" style='color: white;'
+          onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">Add IT equipment</a>
         </li>
-        <li {% if section == "not_used_equipmen" %}class="selected"{% endif %}>
-          <a class="nav-link" href="{% url "not_used_equipment" %}">Equipment Not in Use</a>
+        <li {% if section == "not_used_equipment" %} class="selected"{% endif %} style="margin-right: 5px;">
+          <a class="nav-link" href="{% url "not_used_equipment" %}" style='color: white;'
+          onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">Equipment Not in Use</a>
         </li>
         <li {% if section == "logout" %}class="selected"{% endif %}>
-          <button type="button">
-          <a class="nav-link" href="{% url "logout" %}">Logout</a></button>
+          <a class="nav-link btn btn-danger" href="{% url "logout" %} role="button" style='color: white; width:max-content;'>Logout</a>
         </li>
       </ul>
       
@@ -93,7 +101,7 @@
 
 <footer id="sticky-footer" class="flex-shrink-0 py-2 bg-dark text-white-50 fixed">
   <div class="container text-center">
-    <small>Copyright &copy; ITlogsite </small>
+    <small>2022 Copyright &copy; ITlogsite </small>
   </div>
 </footer>
 <script>
