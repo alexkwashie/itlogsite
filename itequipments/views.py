@@ -67,7 +67,7 @@ def all_equipment(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    eq_search = request.GET.get('searchMovie')
+    
     return render(request,'itequipments/all_equipment.html', {'equipment':equipment,'eqlist':page_obj})
 
 
@@ -85,7 +85,7 @@ def not_used_equipment(request):
 @login_required
 def add_equipment(request):
     if request.method == 'GET':
-        equipment_no = All_equipment.objects.all().count()
+        equipment_no = All_equipment.objects.all().count()+1
         return render(request,'itequipments/add_equipment.html', {'form': EquipmentForm, 'count': equipment_no})
     else:
         try:
@@ -103,6 +103,11 @@ def view_equipment(request,log_pk):
     equipment_detail= get_object_or_404(All_equipment, pk=log_pk)
     return render(request,'itequipments/view_equipment.html', {'equipment':equipment_detail})
 
+@login_required
+def view_not_equipment(request,log_pk):
+    equipment_detail= get_object_or_404(All_equipment, pk=log_pk)
+    return render(request,'itequipments/view_not_equipment.html', {'equipment':equipment_detail})
+
 
 @login_required
 def edit_equipment(request, log_pk):
@@ -115,13 +120,34 @@ def edit_equipment(request, log_pk):
     else:
         if request.method =='POST':
             try:
-                form = EquipmentForm(request.POST, instance=equipment_edit)
+                form = EquipmentForm(request.POST, request.FILES, instance=equipment_edit)
                 form.save()
                 return redirect('all_equipment')
             
             except ValueError:
                 return render(request,'itequipments/edit_equipment.html', 
                 {'equipment':equipment_edit, 'form':form, 'error': 'Incorrect data, Please try again.'})
+
+
+@login_required
+def edit_not_equipment(request, log_pk):
+    equipment_edit= get_object_or_404(All_equipment, pk=log_pk)
+
+    if request.method =='GET':
+        form = EquipmentForm(instance=equipment_edit)
+        return render(request,'itequipments/edit_not_equipment.html', {'equipment':equipment_edit, 'form':form})
+
+    else:
+        if request.method =='POST':
+            try:
+                form = EquipmentForm(request.POST, request.FILES, instance=equipment_edit)
+                form.save()
+                return redirect('not_used_equipment')
+            
+            except ValueError:
+                return render(request,'itequipments/edit_not_equipment.html', 
+                {'equipment':equipment_edit, 'form':form, 'error': 'Incorrect data, Please try again.'})
+
 
 @login_required
 def delete_equipment(request, log_pk ):

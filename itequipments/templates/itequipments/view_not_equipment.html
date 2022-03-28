@@ -47,7 +47,7 @@
             <div class="container d-flex" style="margin-top: 15px;">
                 
             
-                <form action="{% url 'edit_equipment' equipment.id %}" method="GET"> 
+                <form action="{% url 'edit_not_equipment' equipment.id %}" method="GET"> 
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Edit</button>
                </form> 

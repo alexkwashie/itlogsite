@@ -22,6 +22,8 @@ urlpatterns = [
     path('not_used_equipment/', views.not_used_equipment, name='not_used_equipment'),
     path('add_equipment/', views.add_equipment, name='add_equipment'),
     path('view_equipment/<int:log_pk>', views.view_equipment, name='view_equipment'),
+    path('view_not_equipment/<int:log_pk>', views.view_not_equipment, name='view_not_equipment'),
     path('edit_equipment/<int:log_pk>', views.edit_equipment, name='edit_equipment'),
+    path('edit_not_equipment/<int:log_pk>', views.edit_not_equipment, name='edit_not_equipment'),
     path('edit_equipment/<int:log_pk>/delete', views.delete_equipment, name='delete_equipment'),
 ]

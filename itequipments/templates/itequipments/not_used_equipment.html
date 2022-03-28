@@ -27,7 +27,7 @@
             {% for item in equipment %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
-            <td><a href="{% url "view_equipment" item.id %}"> {{item.asset_no}} </a></td>
+            <td><a href="{% url "view_not_equipment" item.id %}"> {{item.asset_no}} </a></td>
             <td>{{item.assigned_to}}</td>
             <td>{{item.device_type}}</td>
             <td>{{item.device_model}}</td>

@@ -17,7 +17,7 @@
   <p>Please, use the following form to log-in. If you don't have an account <a href="{% url "register" %}">register here</a></p>
   {% endif %}
 </div>
-  <div class="login-form">
+  <div class=" container login-form" style="width: 70%">
     <form action="{% url 'login' %}" method="post">
       {% csrf_token %}
             <div class="form-group">
@@ -30,17 +30,20 @@
                 <input type="password" name="password" class="form-control" id="password">
             </div>
             <br>
+            
       <input type="hidden" name="next" value="{{ next }}" />
-      <p><input type="submit" value="Log-in"></p>
+      <p><input type="submit" value="Log-in" style="background-color: rgb(32, 89, 173); border-radius: 5px; color: white; padding: 5px 10px 5px 10px;"></p>
     </form>
 
+      
     <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
+    <br>
+        <hr>
   </div>
 
-  <br>
-        <hr>
+  
         <div class="row justify-content-center mt-4">
-            <img src="{% static 'logos.png' %}" style='width: 200px; height: 60px;' alt="">
+            <img src="{% static 'idplogo.png' %}" style='width: 200px; height: 60px;' alt="">
         </div>
         
     </div>
