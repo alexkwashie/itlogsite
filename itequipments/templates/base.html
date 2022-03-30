@@ -55,7 +55,7 @@
           onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">Equipment Not in Use</a>
         </li>
         <li {% if section == "logout" %}class="selected"{% endif %}>
-          <a class="nav-link btn btn-danger" href="{% url "logout" %} role="button" style='color: white; width:max-content;'>Logout</a>
+          <a class="nav-link btn btn-danger" href="{% url 'logout' %}" role="button" style='color: white; width:max-content;'>Logout</a>
         </li>
       </ul>
       
@@ -68,7 +68,7 @@
   </div>
   
     {% else %}
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm navbar navbar-dark bg-primary">
       <div class="container">
         <!--Left side Logo-->
         <a href="/itequipments" class="navbar-brand"><img src="{% static 'idp-logo.webp' %}" style='width: 150px; height: 40px;' alt="">ITlogsite</a>
@@ -82,10 +82,12 @@
           <ul class="navbar-nav ms-auto menu">
       
             <li {% if section == "register" %} class="selected"{% endif %}>
-              <a class="nav-link" href="{% url "register" %}">Register</a>
+              <a class="nav-link" href="{% url "register" %}" style='color: white;'
+              onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">Register</a>
             </li>
             <li {% if section == "login" %}class="selected"{% endif %}>
-              <a class="nav-link" href="{% url "login" %}">Log-in</a>
+              <a class="nav-link" href="{% url "login" %}" style='color: white;'
+              onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">Log-in</a>
             </li>
     
           </div>

@@ -2,17 +2,26 @@
 
 {% block title %}Create an account{% endblock %}
 {% block content %}
-<div class="container">
+
+<div style="text-align: center; margin-top:50px">
   <h1>Create an account</h1>
   <p>Please, sign up using the following form:</p>
+    </div>
 
+<div class="container" style="width:60%">
+  <div class="row justify-content-center mt-5 ">
+    
 
   <form method="post" >
     {% csrf_token %}
    
-    {{ user_form.as_p}}
+    {{ user_form.as_p }}
 
-    <p><input type="submit" value="Create account"></p>
+    <br>
+    <p><input type="submit" value="Create account" style="background-color: rgb(32, 89, 173); border-radius: 5px; color: white; padding: 5px 10px 5px 10px;"></p>
+    
   </form>
-  </div>
+
+</div>
+</div>
 {% endblock %}

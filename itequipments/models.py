@@ -1,8 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User 
 
+
+
+
 # Create your models here.
 class All_equipment(models.Model):
+
     assigned_to = models.CharField(max_length=100)
     asset_no = models.CharField(max_length=100)
     device_type = models.CharField(max_length=100)
@@ -17,6 +21,8 @@ class All_equipment(models.Model):
     image = models.ImageField(upload_to ='eq_images/',blank=True)
     date_assigned = models.DateField(blank=True, null=True,auto_now_add=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
 
     def __str__(self):
         return self.asset_no

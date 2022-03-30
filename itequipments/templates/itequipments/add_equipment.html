@@ -23,7 +23,10 @@
         
         <p>
             <label for="id_asset_no">Asset no:</label>
-            <input type="text" name="asset_no" maxlength="100" required id="id_asset_no" value="IT0{{count}}" readonly></p>
+            <input type="text" 
+            style="color:rgb(37, 1, 1); 
+            font-weight: 800;" 
+            name="asset_no" maxlength="100" required id="id_asset_no" value="  IT0{{count}}" readonly></p>
         
           
           <p>
@@ -43,7 +46,12 @@
           
           <p>
             <label for="id_location_status">Location status:</label>
-            <input type="text" name="location_status" class="form-control" required id="id_location_status"></p>
+              <select class="form-select" type="text" name="location_status" required id="id_location_status" aria-label="Default select example">
+                <option selected>Select status</option>
+                <option value="Stationary">Stationary</option>
+                <option value="Mobile">Mobile</option>
+              </select>
+          </p>
         
           
           <p>

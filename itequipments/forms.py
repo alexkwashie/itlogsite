@@ -50,6 +50,7 @@ class EquipmentForm(forms.ModelForm):
 
 
 
+
         assigned_to = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
         device_type = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
         device_make = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
