@@ -3,13 +3,14 @@
 {% block content %}
 
 
-
+<div style="container">
 {% if form.errors %}
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <p>{{ error }}</p>
       <a href="{% url 'add_equipment' %}"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
   </div>
 {% endif %}
+</div>
 
 <div class="container">
     
@@ -88,8 +89,9 @@
             <label for="id_assigned_to">Assigned to:</label>
             <input type="text" name="assigned_to" class="form-control" required id="id_assigned_to"></p>
                
-        
-        <button type="submit">Submit</button>
+        <br>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
         
         </form>
     </div>

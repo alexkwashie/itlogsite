@@ -24,7 +24,7 @@
         <!--Left side Logo-->
 
       
-        <a href="/itequipments" class="navbar-brand"><img src="{% static 'idplogo.png' %}" style='width: 150px; height: 50px;' alt=""><span style="font-weight: 600; font-size:large;">IT LOGSITE</span></a>
+        <a href="/itequipments" class="navbar-brand"><img src="{% static 'idplogo.png' %}" style='width: 150px; height: 50px;' alt=""><span style="font-weight: 600; font-size:large;">IT LOGSITE </span></a>
           
 
         
@@ -55,7 +55,7 @@
           onMouseOver="this.style.background='grey'" onMouseOut="this.style.background=''">Equipment Not in Use</a>
         </li>
         <li {% if section == "logout" %}class="selected"{% endif %}>
-          <a class="nav-link btn btn-danger" href="{% url 'logout' %}" role="button" style='color: white; width:max-content;'>Logout</a>
+          <a class="nav-link btn btn-danger" href="{% url 'logout' %}" role="button" style='color: white; width:max-content; font-weight: 600;'>Logout</a>
         </li>
       </ul>
       
