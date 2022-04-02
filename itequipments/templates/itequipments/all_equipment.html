@@ -19,7 +19,7 @@
     </div>
 
     <br>
-
+    <p>Total Equipement no.: {{count}}</p>
     <table class="table table-bordered">
         <thead>
           <tr>
@@ -37,7 +37,7 @@
        
         
         <tbody>
-            {% for item in equipment %}
+            {% for item in eqlist %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
             <td><a href="{% url "view_equipment" item.id %}"> {{item.asset_no}} </a></td>
@@ -52,7 +52,23 @@
           {% endfor %}
         </table>
         
+
+        <br>
+
+        {% if eqlist.has_previous %}
+        <a href="?page=1">&laquo First</a>
+        <a href="?page={{eqlist.previous_page_number}}">Previous</a>
+        {% endif %}
+
+        Page {{ eqlist.number }} of {{ eqlist.paginator.num_pages }}
+
+        {% if eqlist.has_next %}
+        <a href="?page={{eqlist.next_page_number}}">next</a>
+        <a href="?page={{eqlist.previous.num_pages}}">Last &raquo</a>
+        {% endif %}
+
     </div>
 
+       
 
 {% endblock %}

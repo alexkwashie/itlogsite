@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import LoginForm, UserRegistrationForm, EquipmentForm
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -63,12 +63,12 @@ def register(request):
 def all_equipment(request):
     equipment = All_equipment.objects.filter(in_service=True)
 
-    paginator = Paginator(equipment, 5)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    eq_count = equipment.count()
+    pag = Paginator(equipment, 10)
+    page = request.GET.get('page')
+    page_obj = pag.get_page(page)
 
-    
-    return render(request,'itequipments/all_equipment.html', {'equipment':equipment,'eqlist':page_obj})
+    return render(request,'itequipments/all_equipment.html', {'equipment':equipment,'eqlist':page_obj, 'count': eq_count})
 
 
 def all_equipment_search(request):
